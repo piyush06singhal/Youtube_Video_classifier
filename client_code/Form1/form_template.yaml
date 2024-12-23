@@ -23,14 +23,18 @@ components:
       role: elevated-button
       spacing:
         margin: [15, null, null, null]
-      spacing_above: none
+      spacing_above: small
       spacing_below: small
       text: Button
     type: Button
-  - layout_properties: {grid_position: 'YYFQMX,JVZANG'}
-    name: text_box_2
-    properties: {align: center, background: 'theme:Primary Overlay 2', bold: true, foreground: 'theme:On Secondary Container', spacing_above: large, text: Summary}
-    type: TextBox
+  - layout_properties: {full_width_row: false, grid_position: 'NALOLO,FOSKYF'}
+    name: label_1
+    properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 15, foreground: 'theme:On Surface', role: display, spacing_above: large, text: Summary}
+    type: Label
+  - layout_properties: {grid_position: 'RNIVKS,YYSUVO'}
+    name: file_loader_1
+    properties: {bold: true, font_size: 15, multiple: false, role: outlined-button, show_state: true, spacing_above: large}
+    type: FileLoader
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}
