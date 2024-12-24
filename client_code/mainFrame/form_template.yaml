@@ -4,15 +4,16 @@ components:
     name: image_1
     properties: {display_mode: zoom_to_fill, height: '170', source: _/theme/images.png}
     type: Image
-  - layout_properties: {grid_position: 'WUKRFX,VLSDCV'}
-    name: text_box_1
-    properties: {align: center, background: 'theme:Primary Container', bold: true, font_size: 16, foreground: 'theme:On Surface', italic: false, role: input-error, spacing_above: large, text: Enter the Youtube Video Url, type: url}
+  - data_bindings: []
+    layout_properties: {grid_position: 'HTKPQX,XWZNGZ'}
+    name: video_url_textbox
+    properties: {align: center, background: 'theme:Primary Container', bold: true, enabled: true, font_size: 16, foreground: 'theme:On Surface', hide_text: false, italic: false, role: input-error, spacing_above: large, text: Enter the Youtube Video Url, type: url, visible: true}
     type: TextBox
   - data_bindings:
     - {code: 'self.item['''']', property: spacing, writeback: false}
-    event_bindings: {click: button_1_click}
+    event_bindings: {click: analyze_button_click}
     layout_properties: {grid_position: 'YLBYDW,TYCKNV'}
-    name: button_1
+    name: analyze_button
     properties:
       background: theme:On Surface
       bold: true
@@ -28,13 +29,14 @@ components:
       text: Button
     type: Button
   - layout_properties: {full_width_row: false, grid_position: 'NALOLO,FOSKYF'}
-    name: label_1
-    properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 19, foreground: 'theme:On Surface', role: headline, spacing_above: large, text: Overall Video Analysis}
+    name: result_label
+    properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 19, foreground: 'theme:On Surface', role: headline, spacing_above: large, text: Video analysis, visible: true}
     type: Label
-  - layout_properties: {grid_position: 'RNIVKS,YYSUVO'}
-    name: file_loader_1
-    properties: {bold: true, font_size: 15, multiple: false, role: outlined-button, show_state: true, spacing_above: large}
-    type: FileLoader
+  - event_bindings: {}
+    layout_properties: {grid_position: 'QUUFWX,RUZQJG'}
+    name: download_link
+    properties: {align: center, background: 'theme:Secondary Container', font_size: 17, foreground: 'theme:On Surface', role: title, spacing_above: large, text: Download File}
+    type: Link
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}
