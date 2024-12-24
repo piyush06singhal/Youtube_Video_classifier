@@ -2,12 +2,12 @@ from ._anvil_designer import mainFrameTemplate
 from anvil import *
 import anvil.server
 
-class mainFrame(mainFrameTemplate):  # Ensure this matches the name of your form in the Anvil Editor
+class mainFrame(mainFrameTemplate):
     def __init__(self, **properties):
         """Initialize the form and its components."""
         self.init_components(**properties)
         self.download_link.visible = False  # Hide the download link initially
-        self.video_url_textbox.text = ""  # Initialize textbox text if required
+        self.video_url_textbox.text = ""  # Clear the URL textbox initially (optional)
 
     def analyze_button_click(self, **event_args):
         """Triggered when the 'Analyze' button is clicked."""
@@ -21,13 +21,13 @@ class mainFrame(mainFrameTemplate):  # Ensure this matches the name of your form
         try:
             # Disable the TextBox while processing to prevent new inputs
             self.video_url_textbox.enabled = False
-            self.result_label.text = "Analyzing the video, please wait..."  # Show a processing message
-            self.download_link.visible = False  # Hide the download link until processing is done
+            # Show a loading message or similar feedback
+            self.result_label.text = "Analyzing the video, please wait..."
+            self.download_link.visible = False  # Hide the download link during processing
 
             # Call the analyze_video function on the server
             result = anvil.server.call('analyze_video', video_url)
 
-            # Check for errors in the result
             if 'error' in result:
                 self.result_label.text = f"Error: {result['error']}"
             else:
@@ -37,10 +37,10 @@ class mainFrame(mainFrameTemplate):  # Ensure this matches the name of your form
 
                 # Provide a download link for the Excel file after processing is completed
                 if 'file' in result:
-                    # Use the Download component for file download
-                    self.download_link.file = result['file']  # This is where we assign the file
+                    # Make sure the file is assigned properly for download
+                    self.download_link.file = result['file']
                     self.download_link.text = "Download Comments Excel File"
-                    self.download_link.visible = True  # Make the download link visible after processing
+                    self.download_link.visible = True  # Show the download link
 
         except Exception as e:
             # Handle any unexpected errors
