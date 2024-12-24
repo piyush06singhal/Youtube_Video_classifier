@@ -32,10 +32,10 @@ components:
     name: result_label
     properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 19, foreground: 'theme:On Surface', role: headline, spacing_above: large, text: Video analysis, visible: true}
     type: Label
-  - event_bindings: {}
-    layout_properties: {grid_position: 'QUUFWX,RUZQJG'}
+  - event_bindings: {click: download_link}
+    layout_properties: {grid_position: 'JQKMYG,CNIAZB'}
     name: download_link
-    properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 17, foreground: 'theme:On Surface', role: null, spacing_above: large, text: Download File, wrap_on: never}
+    properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 18, role: headline, spacing_above: large, text: Download Link, url: download_link, wrap_on: never}
     type: Link
   layout_properties: {slot: default}
   name: content_panel
