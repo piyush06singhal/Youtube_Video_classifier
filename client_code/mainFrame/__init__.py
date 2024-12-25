@@ -1,4 +1,3 @@
-
 from ._anvil_designer import mainFrameTemplate
 from anvil import *
 import anvil.server
@@ -12,10 +11,10 @@ class mainFrame(mainFrameTemplate):
 
     def analyze_button_click(self, **event_args):
         """Triggered when the 'Analyze' button is clicked."""
-        video_url = self.video_url_textbox.text  # Get the video URL entered by the user
+        video_url = self.video_url_textbox.text.strip()  # Get the video URL entered by the user
 
         # Check if the URL is empty
-        if not video_url.strip():
+        if not video_url:
             self.result_label.text = "Please enter a valid YouTube URL."
             return
 
@@ -43,6 +42,9 @@ class mainFrame(mainFrameTemplate):
                     self.download_link.text = "Download Comments Excel File"
                     self.download_link.visible = True  # Show the download link
 
+                    # Optionally, you can also display a message indicating the file is ready
+                    self.result_label.text += "\nComments Excel file is ready for download."
+
         except Exception as e:
             # Handle any unexpected errors
             self.result_label.text = f"An unexpected error occurred: {str(e)}"
@@ -50,4 +52,3 @@ class mainFrame(mainFrameTemplate):
         finally:
             # Re-enable the TextBox after the processing is finished
             self.video_url_textbox.enabled = True
-
