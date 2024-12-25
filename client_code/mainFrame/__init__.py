@@ -49,3 +49,5 @@ class mainFrame(mainFrameTemplate):
         finally:
             # Re-enable the TextBox after the processing is finished
             self.video_url_textbox.enabled = True
+
+
