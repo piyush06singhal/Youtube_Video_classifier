@@ -1,88 +1,94 @@
-# About This [Anvil](https://anvil.works/?utm_source=github:app_README) App
+# YouTube Comment Analyzer with Google Drive Integration
 
-### Build web apps with nothing but Python.
+## Project Overview
+This project is a web application built using **Anvil** that allows users to analyze YouTube video comments. It integrates features like sentiment analysis, genre classification, and exporting data to **Google Drive** in an organized format. The main objective is to provide users with insights about the comments of a YouTube video and a downloadable comments file for further analysis.
 
-The app in this repository is built with [Anvil](https://anvil.works?utm_source=github:app_README), the framework for building web apps with nothing but Python. You can clone this app into your own Anvil account to use and modify.
+---
 
-Below, you will find:
-- [How to open this app](#opening-this-app-in-anvil-and-getting-it-online) in Anvil and deploy it online
-- Information [about Anvil](#about-anvil)
-- And links to some handy [documentation and tutorials](#tutorials-and-documentation)
+## Key Features
+### 1. **Comment Fetching**
+   - Fetches up to 100 comments at a time using the YouTube Data API.
+   - Handles pagination to gather all available comments for a given video.
 
-## Opening this app in Anvil and getting it online
+### 2. **Sentiment Analysis**
+   - Analyzes the overall sentiment of comments using **TextBlob**.
+   - Sentiment Categories:
+     - Extremely Positive
+     - Positive
+     - Neutral
+     - Negative
+     - Extremely Negative
 
-### Cloning the app
+### 3. **Genre Classification**
+   - Classifies the video based on keywords in comments.
+   - Possible Genres:
+     - Comedy
+     - Romance
+     - Action
+     - Educational
+     - Heartwarming
+     - And more...
 
-Go to the [Anvil Editor](https://anvil.works/build?utm_source=github:app_README) (you might need to sign up for a free account) and click on “Clone from GitHub” (underneath the “Blank App” option):
+### 4. **Export to Excel**
+   - Saves comments in a structured format in an Excel file.
+   - Includes the username and comment in separate columns.
+   - Each sheet contains up to 100 comments for better readability.
 
-<img src="https://anvil.works/docs/version-control-new-ide/img/git/clone-from-github.png" alt="Clone from GitHub"/>
+### 5. **Google Drive Integration**
+   - Automatically uploads the Excel file to the user’s Google Drive.
+   - Provides a sharable link to access the uploaded file directly.
 
-Enter the URL of this GitHub repository. If you're not yet logged in, choose "GitHub credentials" as the authentication method and click "Connect to GitHub".
+---
 
-<img src="https://anvil.works/docs/version-control-new-ide/img/git/clone-app-from-git.png" alt="Clone App from Git modal"/>
+## Technologies Used
+### **Frontend:**
+   - **Anvil**: A platform for building full-stack web applications with Python.
 
-Finally, click "Clone App".
+### **Backend:**
+   - **Python**: For logic implementation, including sentiment analysis and genre classification.
+   - **YouTube Data API**: For fetching comments from YouTube videos.
+   - **TextBlob**: For performing sentiment analysis.
+   - **Google Drive API**: For uploading the Excel file to Google Drive.
 
-This app will then be in your Anvil account, ready for you to run it or start editing it! **Any changes you make will be automatically pushed back to this repository, if you have permission!** You might want to [make a new branch](https://anvil.works/docs/version-control-new-ide?utm_source=github:app_README).
+---
 
-### Running the app yourself:
+## How It Works
+1. **Input the Video URL:**
+   - User enters a YouTube video URL into the input field.
 
-Find the **Run** button at the top-right of the Anvil editor:
+2. **Processing:**
+   - The application fetches the comments using the YouTube Data API.
+   - Analyzes the sentiment of the combined comments.
+   - Classifies the genre based on keywords in the comments.
 
-<img src="https://anvil.works/docs/img/run-button-new-ide.png"/>
+3. **Output:**
+   - Displays the overall sentiment and genre on the web app.
+   - Provides a sharable link to the comments file on Google Drive.
 
+---
 
-### Publishing the app on your own URL
+## File Structure
+### **Frontend Code**
+- Written in Python using Anvil’s framework.
+- Handles user input, result display, and download link integration.
 
-Now you've cloned the app, you can [deploy it on the internet with two clicks](https://anvil.works/docs/deployment/quickstart?utm_source=github:app_README)! Find the **Publish** button at the top-right of the editor:
+### **Backend Code**
+- Fetches and processes YouTube comments.
+- Saves processed data in an Excel file.
+- Uploads the Excel file to Google Drive.
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/environments/publish-button.png"/>
+---
 
-When you click it, you will see the Publish dialog:
+## Prerequisites
+- **Python 3.7+**
+- **Google API Key** for YouTube Data API.
+- **Google Service Account** for Drive API integration.
+- **Anvil Uplink Key** for connecting the client-side and server-side.
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/empty-environments-dialog.png"/>
+---
 
-Click **Publish This App**, and you will see that your app has been deployed at a new, public URL:
-
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/default-public-environment.png"/>
-
-That's it - **your app is now online**. Click the link and try it!
-
-## About Anvil
-
-If you’re new to Anvil, welcome! Anvil is a platform for building full-stack web apps with nothing but Python. No need to wrestle with JS, HTML, CSS, Python, SQL and all their frameworks – just build it all in Python.
-
-<figure>
-<figcaption><h3>Learn About Anvil In 80 Seconds👇</h3></figcaption>
-<a href="https://www.youtube.com/watch?v=3V-3g1mQ5GY" target="_blank">
-<img
-  src="https://anvil-website-static.s3.eu-west-2.amazonaws.com/anvil-in-80-seconds-YouTube.png"
-  alt="Anvil In 80 Seconds"
-/>
-</a>
-</figure>
-<br><br>
-
-[![Try Anvil Free](https://anvil-website-static.s3.eu-west-2.amazonaws.com/mark-complete.png)](https://anvil.works?utm_source=github:app_README)
-
-To learn more about Anvil, visit [https://anvil.works](https://anvil.works?utm_source=github:app_README).
-
-## Tutorials and documentation
-
-### Tutorials
-
-If you are just starting out with Anvil, why not **[try the 10-minute Feedback Form tutorial](https://anvil.works/learn/tutorials/feedback-form?utm_source=github:app_README)**? It features step-by-step tutorials that will introduce you to the most important parts of Anvil.
-
-Anvil has tutorials on:
-- [Building Dashboards](https://anvil.works/learn/tutorials/data-science#dashboarding?utm_source=github:app_README)
-- [Multi-User Applications](https://anvil.works/learn/tutorials/multi-user-apps?utm_source=github:app_README)
-- [Building Web Apps with an External Database](https://anvil.works/learn/tutorials/external-database?utm_source=github:app_README)
-- [Deploying Machine Learning Models](https://anvil.works/learn/tutorials/deploy-machine-learning-model?utm_source=github:app_README)
-- [Taking Payments with Stripe](https://anvil.works/learn/tutorials/stripe?utm_source=github:app_README)
-- And [much more....](https://anvil.works/learn/tutorials?utm_source=github:app_README)
-
-### Reference Documentation
-
-The Anvil reference documentation provides comprehensive information on how to use Anvil to build web applications. You can find the documentation [here](https://anvil.works/docs/overview?utm_source=github:app_README).
-
-If you want to get to the basics as quickly as possible, each section of this documentation features a [Quick-Start Guide](https://anvil.works/docs/overview/quickstarts?utm_source=github:app_README).
+## Setup Instructions
+### **1. Clone the Repository**
+```bash
+git clone <repository-link>
+cd <repository-directory>
