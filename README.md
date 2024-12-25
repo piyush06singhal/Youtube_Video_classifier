@@ -92,3 +92,45 @@ This project is a web application built using **Anvil** that allows users to ana
 ```bash
 git clone <repository-link>
 cd <repository-directory>
+
+2. Install Required Python Libraries
+bash
+Copy code
+pip install openpyxl textblob google-api-python-client anvil-uplink
+3. Configure API Keys
+Add your YouTube API Key and Google Service Account credentials in the respective parts of the backend code.
+4. Start the Server
+Run the Anvil server-side code:
+
+bash
+Copy code
+python server_code.py
+Challenges Faced
+Pagination Handling: Ensuring all comments are fetched even for videos with large comment sections.
+Genre Classification: Developing meaningful categories for classification based on keywords.
+File Integration with Google Drive: Managing authentication and file upload using the Google Drive API.
+Future Enhancements
+Real-Time Analysis: Enhance the backend to support real-time analysis for live videos.
+Data Visualization: Integrate charts to visualize comment sentiments and trends.
+Language Support: Expand to support multi-language comment analysis using NLP libraries.
+User Accounts: Allow users to log in and save their analysis history.
+Contributions
+Contributions are welcome! Please feel free to submit pull requests or create issues for improvements.
+
+License
+This project is open-sourced under the MIT License.
+
+Contact
+For any queries or collaborations, feel free to reach out:
+
+Email: piyush@example.com
+LinkedIn: Piyush Singhal
+css
+Copy code
+
+This README file is detailed, professional, and follows a structured format, making it easy for anyone to understand and contribute to the project.
+
+
+
+
+
