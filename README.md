@@ -1,5 +1,9 @@
 # YouTube Comment Analyzer with Google Drive Integration
 
+# Website Link:- 
+
+
+---
 ## Project Overview
 This project is a web application built using **Anvil** that allows users to analyze YouTube video comments. It integrates features like sentiment analysis, genre classification, and exporting data to **Google Drive** in an organized format. The main objective is to provide users with insights about the comments of a YouTube video and a downloadable comments file for further analysis.
 
@@ -75,7 +79,7 @@ This project is a web application built using **Anvil** that allows users to ana
 ### **Backend Code**
 - Fetches and processes YouTube comments.
 - Saves processed data in an Excel file.
-- Uploads the Excel file to Google Drive.
+- Upload the Excel file to Google Drive.
 
 ---
 
@@ -87,50 +91,23 @@ This project is a web application built using **Anvil** that allows users to ana
 
 ---
 
-## Setup Instructions
-### **1. Clone the Repository**
-```bash
-git clone <repository-link>
-cd <repository-directory>
-
-2. Install Required Python Libraries
-bash
-Copy code
-pip install openpyxl textblob google-api-python-client anvil-uplink
-3. Configure API Keys
-Add your YouTube API Key and Google Service Account credentials in the respective parts of the backend code.
-4. Start the Server
-Run the Anvil server-side code:
-
-bash
-Copy code
-python server_code.py
-Challenges Faced
+# Challenges Faced
 Pagination Handling: Ensuring all comments are fetched even for videos with large comment sections.
 Genre Classification: Developing meaningful categories for classification based on keywords.
 File Integration with Google Drive: Managing authentication and file upload using the Google Drive API.
-Future Enhancements
+
+---
+# Future Enhancements
 Real-Time Analysis: Enhance the backend to support real-time analysis for live videos.
 Data Visualization: Integrate charts to visualize comment sentiments and trends.
 Language Support: Expand to support multi-language comment analysis using NLP libraries.
 User Accounts: Allow users to log in and save their analysis history.
-Contributions
+
+---
+# Contributions
 Contributions are welcome! Please feel free to submit pull requests or create issues for improvements.
 
-License
+---
+# License
 This project is open-sourced under the MIT License.
-
-Contact
-For any queries or collaborations, feel free to reach out:
-
-Email: piyush@example.com
-LinkedIn: Piyush Singhal
-css
-Copy code
-
-This README file is detailed, professional, and follows a structured format, making it easy for anyone to understand and contribute to the project.
-
-
-
-
 
