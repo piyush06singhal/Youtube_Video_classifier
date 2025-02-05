@@ -22,7 +22,7 @@ class mainFrame(mainFrameTemplate):
             self.video_url_textbox.enabled = False
             # Show a loading message or similar feedback
             self.result_label.text = "Analyzing the video, please wait..."
-
+        
             # Call the analyze_video function on the server
             result = anvil.server.call('analyze_video', video_url)
 
