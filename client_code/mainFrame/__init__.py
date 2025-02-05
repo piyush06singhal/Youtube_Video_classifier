@@ -22,13 +22,15 @@ class mainFrame(mainFrameTemplate):
             self.video_url_textbox.enabled = False
             # Show a loading message or similar feedback
             self.result_label.text = "Analyzing the video, please wait..."
-        
+            print("Video analyzed", video_url)
             # Call the analyze_video function on the server
             result = anvil.server.call('analyze_video', video_url)
-
+            print("piyush is analyzing the video")
             if 'error' in result:
                 self.result_label.text = f"Error: {result['error']}"
+                print("Hey, I am checking the video")
             else:
+                print("inside else statement")
                 sentiment = result['sentiment']
                 genre = result['genre']
                 self.result_label.text = f"The Overall Video Sentiment Analysis is: {sentiment}\nThe Overall Video Genre is: {genre}"
