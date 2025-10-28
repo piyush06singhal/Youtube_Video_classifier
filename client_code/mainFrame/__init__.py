@@ -1,7 +1,3 @@
-# ============================================================================
-# COMPLETE ANVIL FORM CODE - COPY THIS ENTIRE FILE
-# ============================================================================
-# Replace ALL your form code with this
 
 from ._anvil_designer import mainFrameTemplate
 from anvil import *
