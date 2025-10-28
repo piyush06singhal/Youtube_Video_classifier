@@ -1,8 +1,3 @@
-# ============================================================================
-# IMPROVED YOUTUBE VIDEO COMMENT SENTIMENT ANALYZER
-# ============================================================================
-# Install required packages first (run in Colab):
-# !pip install anvil-uplink vaderSentiment openpyxl google-api-python-client emoji
 
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
@@ -407,7 +402,7 @@ def create_excel_file(analyzed_comments, video_metadata, overall_sentiment, over
 @anvil.server.callable("analyze_video")
 def analyze_video(video_url):
     """Main function to analyze video and return results"""
-    api_key = "AIzaSyCqrNNtoQyJQ7jOPvjUNTfHvC0MfdrEvYk"
+    api_key = ""
     
     # Extract video ID
     video_id = None
@@ -569,3 +564,4 @@ print("  ✓ Enhanced Genre Classification")
 print("=" * 60)
 
 anvil.server.wait_forever()
+
