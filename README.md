@@ -1,4 +1,4 @@
-# YouTube Comment Analyzer with Google Drive Integration
+# YouTube Comment Analyzer 
 
 **Live App:** https://jam-packed-simplistic-wave.anvil.app/
 
