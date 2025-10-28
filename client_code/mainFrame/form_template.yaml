@@ -32,6 +32,11 @@ components:
     name: result_label
     properties: {align: center, background: 'theme:Secondary Container', bold: true, font_size: 19, foreground: 'theme:On Surface', role: headline, spacing_above: large, text: Video analysis, visible: true}
     type: Label
+  - event_bindings: {click: button_download_click}
+    layout_properties: {grid_position: 'UFTTXT,DOLKQP'}
+    name: button_download
+    properties: {role: elevated-button, text: Download Excel Report, visible: false}
+    type: Button
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}
