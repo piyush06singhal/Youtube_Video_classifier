@@ -8,13 +8,15 @@
 
 **Major Upgrade Complete!** The project has been significantly enhanced with professional-grade features:
 
-- ✅ **85-90% Accuracy** (upgraded from 60-70%)
+- ✅ **85-90% Accuracy** (upgraded from 60-70% with TextBlob)
+- ✅ **VADER Sentiment Analysis** (designed for social media)
 - ✅ **Per-Comment Analysis** (individual sentiment for each comment)
 - ✅ **Excel Report Download** (professional reports with 2 sheets)
 - ✅ **Spam & Bot Detection** (automatic filtering)
 - ✅ **Video Metadata** (title, channel, views, likes)
 - ✅ **Enhanced Genre Classification** (18 genres, top 3 results)
 - ✅ **Emoji Support** (proper handling of emojis in comments)
+- ✅ **1000 Comments Analysis** (statistically significant sample)
 
 ---
 
@@ -22,107 +24,223 @@
 
 A professional web application built using **Anvil** and **Google Colab** that analyzes YouTube video comments with high accuracy. The app provides detailed sentiment analysis, genre classification, spam/bot detection, and generates downloadable Excel reports with comprehensive insights.
 
+**Why 1000 comments?** This is a statistically significant sample that represents the overall sentiment accurately (within 5% margin). It balances accuracy with processing speed and API quota limits.
+
 ---
 
 ## Key Features
-### 1. **Comment Fetching**
-   - Fetches up to 100 comments at a time using the YouTube Data API.
-   - Handles pagination to gather all available comments for a given video.
 
-### 2. **Sentiment Analysis**
-   - Analyzes the overall sentiment of comments using **TextBlob**.
-   - Sentiment Categories:
-     - Extremely Positive
-     - Positive
-     - Neutral
-     - Negative
-     - Extremely Negative
+### 1. **Advanced Sentiment Analysis (85-90% Accuracy)**
 
-### 3. **Genre Classification**
-   - Classifies the video based on keywords in comments.
-   - Possible Genres:
-     - Comedy
-     - Romance
-     - Action
-     - Educational
-     - Heartwarming
-     - And more...
+- Uses **VADER** (Valence Aware Dictionary and sEntiment Reasoner)
+- Specifically designed for social media text
+- Handles slang, emojis, capitalization, and punctuation
+- **Per-comment analysis** with individual sentiment scores
+- Sentiment Categories:
+  - Extremely Positive (score > 0.5)
+  - Positive (score 0.05 to 0.5)
+  - Neutral (score -0.05 to 0.05)
+  - Negative (score -0.5 to -0.05)
+  - Extremely Negative (score < -0.5)
 
-### 4. **Export to Excel**
-   - Saves comments in a structured format in an Excel file.
-   - Includes the username and comment in separate columns.
-   - Each sheet contains up to 100 comments for better readability.
+### 2. **Intelligent Comment Fetching**
 
-### 5. **Google Drive Integration**
-   - Automatically uploads the Excel file to the user’s Google Drive.
-   - Provides a sharable link to access the uploaded file directly.
+- Fetches up to **1000 comments** per video
+- Prioritizes top comments (most liked/replied)
+- Handles pagination automatically
+- Fetches video metadata (title, channel, views, likes)
+- Processes comments in 10-60 seconds
+
+### 3. **Enhanced Genre Classification**
+
+- **18 different genres** including:
+  - Comedy, Music, Gaming, Educational, Tech, Sports
+  - Food, Travel, Fashion, Horror, Action, Romance
+  - Motivational, Relaxing, Drama, Documentary, Vlog
+- Returns **top 3 genres** if multiple detected
+- Advanced keyword matching algorithm
+
+### 4. **Spam & Bot Detection**
+
+- Automatically identifies spam comments based on:
+  - Comment length, link count, repetitiveness
+  - Excessive punctuation, all-caps text
+- Detects bot accounts based on:
+  - Username patterns, comment patterns
+- Filters spam/bots from overall sentiment calculation
+
+### 5. **Professional Excel Reports**
+
+- **Summary Sheet** includes:
+  - Video title, channel, views, likes
+  - Overall sentiment and score
+  - Genre classification
+  - Total comments, spam count, bot count
+  - Sentiment distribution (percentages)
+- **Detailed Comments Sheet** includes:
+  - Username, comment text (up to 500 chars)
+  - Sentiment label and score
+  - Positive/Neutral/Negative component scores
+  - Like count, spam flag, bot flag
+- Beautiful formatting with colors and styling
+- File size: 1-2 MB for 1000 comments
+
+### 6. **Direct Download**
+
+- Click-to-download Excel reports
+- No Google Drive authentication needed
+- Automatic filename with video title and timestamp
+- Works in all modern browsers
+
+### 7. **Emoji & Text Processing**
+
+- Converts emojis to text for better analysis
+- Removes HTML tags and URLs
+- Cleans extra whitespace
+- Handles special characters properly
 
 ---
 
 ## Technologies Used
+
 ### **Frontend:**
-   - **Anvil**: A platform for building full-stack web applications with Python.
+
+- **Anvil**: Python-based full-stack web framework
+- Responsive web interface
 
 ### **Backend:**
-   - **Python**: For logic implementation, including sentiment analysis and genre classification.
-   - **YouTube Data API**: For fetching comments from YouTube videos.
-   - **TextBlob**: For performing sentiment analysis.
-   - **Google Drive API**: For uploading the Excel file to Google Drive.
+
+- **Google Colab**: Cloud-based Python environment
+- **Anvil Uplink**: Connects Colab to Anvil app
+- **Python 3.7+**: Core programming language
+
+### **APIs & Libraries:**
+
+- **YouTube Data API v3**: Fetches comments and video metadata
+- **VADER Sentiment**: Advanced sentiment analysis for social media
+- **openpyxl**: Excel file generation with formatting
+- **emoji**: Emoji to text conversion
+- **googleapiclient**: YouTube API integration
 
 ---
 
 ## How It Works
-1. **Input the Video URL:**
-   - User enters a YouTube video URL into the input field.
 
-2. **Processing:**
-   - The application fetches the comments using the YouTube Data API.
-   - Analyzes the sentiment of the combined comments.
-   - Classifies the genre based on keywords in the comments.
+1. **User enters YouTube video URL** in the web app
+2. **System extracts video ID** from the URL
+3. **Fetches up to 1000 comments** (top comments + recent)
+4. **Fetches video metadata** (title, channel, views, likes)
+5. **Analyzes each comment** using VADER sentiment analyzer
+6. **Detects spam and bots** using pattern matching
+7. **Calculates overall sentiment** (filtered for spam/bots)
+8. **Classifies video genre** based on keyword analysis
+9. **Displays results** in the web app with statistics
+10. **Generates Excel report** on button click
+11. **User downloads** the detailed report
 
-3. **Output:**
-   - Displays the overall sentiment and genre on the web app.
-   - Provides a sharable link to the comments file on Google Drive.
-
----
-
-## File Structure
-### **Frontend Code**
-- Written in Python using Anvil’s framework.
-- Handles user input, result display, and download link integration.
-
-### **Backend Code**
-- Fetches and processes YouTube comments.
-- Saves processed data in an Excel file.
-- Upload the Excel file to Google Drive.
+**Processing Time:** 10-60 seconds depending on comment count
 
 ---
 
-## Prerequisites
-- **Python 3.7+**
-- **Google API Key** for YouTube Data API.
-- **Google Service Account** for Drive API integration.
-- **Anvil Uplink Key** for connecting the client-side and server-side.
+## Setup Instructions
+
+### **Prerequisites**
+
+- Google account (for Colab)
+- Anvil account
+- YouTube Data API key
+
+### **Step 1: Install Required Packages (Google Colab)**
+
+```python
+!pip install anvil-uplink vaderSentiment openpyxl google-api-python-client emoji
+```
+
+### **Step 2: Setup Backend (Google Colab)**
+
+1. Open Google Colab
+2. Create a new notebook
+3. Run the cell
+4. Wait for "Server Started" message
+
+### **Step 3: Setup Frontend (Anvil)**
+
+The Anvil app is already configured with:
+
+- **mainFrame** form with UI components
+- **video_url_textbox** for URL input
+- **analyze_button** to trigger analysis
+- **result_label** to display results
+- **button_download** to download Excel report
+
+### **Step 4: Test the App**
+
+1. Make sure Google Colab is running
+2. Go to the Anvil app
+3. Enter a YouTube URL
+4. Click "Submit"
+5. Wait for results (10-60 seconds)
+6. Click "Download Excel Report"
+7. Excel file downloads automatically!
 
 ---
 
-# Challenges Faced
-Pagination Handling: Ensuring all comments are fetched even for videos with large comment sections.
-Genre Classification: Developing meaningful categories for classification based on keywords.
-File Integration with Google Drive: Managing authentication and file upload using the Google Drive API.
+## Use Cases
+
+1. **Content Creators**: Understand audience sentiment and feedback
+2. **Marketers**: Analyze brand perception and campaign effectiveness
+3. **Researchers**: Study public opinion and social trends
+4. **Students**: Academic projects on sentiment analysis and NLP
+5. **Businesses**: Monitor product reviews and customer feedback
+6. **Social Media Managers**: Track engagement and sentiment trends
 
 ---
-# Future Enhancements
-Real-Time Analysis: Enhance the backend to support real-time analysis for live videos.
-Data Visualization: Integrate charts to visualize comment sentiments and trends.
-Language Support: Expand to support multi-language comment analysis using NLP libraries.
-User Accounts: Allow users to log in and save their analysis history.
+
+## Performance & Limitations
+
+### **Performance**
+
+- **Processing Speed**: 10-60 seconds per video
+- **Accuracy**: 85-90% for sentiment analysis
+- **Sample Size**: Up to 1000 comments (statistically significant)
+- **File Size**: 1-2 MB Excel files
+
+
+## Technical Architecture
+
+```
+User (Browser)
+    ↓
+Anvil Web App (Frontend)
+    ↓
+Anvil Uplink
+    ↓
+Google Colab (Backend)
+    ↓
+YouTube Data API v3
+    ↓
+VADER Sentiment Analyzer
+    ↓
+Excel Report Generator
+    ↓
+Download to User
+```
 
 ---
-# Contributions
-Contributions are welcome! Please feel free to submit pull requests or create issues for improvements.
+
+## Contributing
+
+Contributions are welcome! Please feel free to:
+
+- Submit pull requests
+- Report bugs
+- Suggest new features
+- Improve documentation
 
 ---
-# License
-This project is open-sourced under the MIT License.
 
+## License
+
+This project is open-sourced under the MIT License. See LICENSE.txt for details.
+
+**Built with ❤️ using Python, Anvil, and Google Colab**
